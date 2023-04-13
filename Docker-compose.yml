@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongo
     ports:
-      - "3001:3001"
+      - "5000:5000"
     networks: 
      - network-backend
   
