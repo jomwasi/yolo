@@ -5,15 +5,15 @@ services:
     depends_on:
       - api
     ports:
-      - "3000:3000"
+      - "5000:5000"
     networks:
-      - network-backend
+      - network-client
   api:
     build: ./backend
     depends_on:
       - mongo
     ports:
-      - "5000:5000"
+      - "3000:3001"
     networks: 
      - network-backend
   
