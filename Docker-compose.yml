@@ -5,18 +5,18 @@ services:
     depends_on:
       - api
     ports:
-      - "5000:5000"
+      - "3000:3000"
     networks:
-      - network-client
+      - network-backend
   api:
     build: ./backend
     depends_on:
       - mongo
     ports:
-      - "3000:3000"
+      - "5000:5000"
     networks: 
      - network-backend
-  
+
   mongo:
     image: mongo
     restart: always
@@ -28,8 +28,8 @@ services:
     # uncomment following lines to access db locally
     # ports:
     #   - 27017:27017
-    networks: 
-     - network-backend
+    # networks: 
+    #  - network-backend
 
 networks:
   network-backend:
