@@ -1,35 +1,14 @@
-FROM node:16-alpine3.16 
+FROM node:14-alpine
 
-WORKDIR /client
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install --only=production && \
-    npm cache clean --force && \
-    rm -rf /tmp/*
+RUN npm install
 
 COPY . .
 
-RUN npm run build && \
-    npm prune --production
-
-# Production stage
-
-FROM node:alpine3.16 as production-stage
-
-WORKDIR /client
-
-COPY --from=build-stage /client/build ./build
-COPY --from=build-stage /client/public ./public
-COPY --from=build-stage /client/src ./src
-COPY --from=build-stage /client/package*.json ./
-
-ENV NODE_ENV=production
-
 EXPOSE 3000
 
-RUN npm prune --production && \
-    npm cache clean --force && \
-    rm -rf /tmp/*
+CMD ["npm", "start"]
 
-CMD ["npm","start"]
