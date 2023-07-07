@@ -13,7 +13,8 @@ provider "aws" {
 access_key = "AKIA34WI7EUXZPWCUJFC"
   secret_key = "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"
 }
-resource "<provider>_<resource_type>" "<name>"{
+
+resource "<provider>_<EC2>" "<Yolo>"{
 config options....connection {
   key = "value"
   key = "another value"
@@ -21,3 +22,10 @@ config options....connection {
 }
 
 }
+resource "aws_instance" "YOLO"{
+  ami           = 053b0d53c279acc90
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "YOLO"
+  }
