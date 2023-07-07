@@ -14,7 +14,7 @@ access_key = "AKIA34WI7EUXZPWCUJFC"
   secret_key = "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"
 }
 
-resource "<provider>_<EC2>" "<Yolo>"{
+//resource "<provider>_<EC2>" "<Yolo>"{
 config options....connection {
   key = "value"
   key = "another value"
